@@ -1,5 +1,5 @@
 最近公司内部在开始做前端技术的技术分享，每周一个主题的 **每周一练**，以**基础知识**为主，感觉挺棒的，跟着团队的大佬们学习和复习一些知识，新人也可以多学习一些知识，也把团队内部学习氛围营造起来。   
- 
+
 我接下来会开始把每周一练的题目和知识整理一下，便于思考和巩固，就像今天这篇开始。    
 
 学习的道路，很漫长，要坚持，希望大家都能掌握自己喜欢的技术，和自己需要的技术。   
@@ -8,14 +8,14 @@
 
 **本周练习内容：数据结构与算法 —— Stack**   
 
-这些都是算法题，一部分方法是团队其他成员实现的，一部分我自己做的，有什么其他实现方法或错误，欢迎各位大佬指点，感谢。   
+这些都是数据结构与算法，一部分方法是团队其他成员实现的，一部分我自己做的，有什么其他实现方法或错误，欢迎各位大佬指点，感谢。   
 
 ## 一、栈有什么特点，生活中有什么例子?
 * 栈( stack )又称**堆栈**，是一种后进先出的**有序集合**，其中一端为栈顶，另一端为栈底，添加元素（称为压栈/入栈或进栈）时，将新元素压入栈顶，删除元素（称为出栈或退栈）时，将栈底元素删除并返回被删除元素。
 * 特点：**先进后出，后进先出**。
 * 例子：一叠书、一叠盘子。
 
-![栈](https://cdn.nlark.com/yuque/0/2019/png/102778/1554694654471-f9a0ae49-f466-438d-a405-46a22fa1dd6b.png)
+![栈](https://user-gold-cdn.xitu.io/2019/4/14/16a176f8ddc1b842?w=739&h=361&f=png&s=39564)
 
 ## 二、实现一个栈，并实现下面方法
 * `push(element)`：添加一个新元素到栈顶。  
@@ -72,7 +72,7 @@ class Stack {
 **方法3：使用 ES6 的 WeakMap 实现**   
 知识点复习：[ES6 中的 WeakMap 介绍](http://es6.ruanyifeng.com/#docs/set-map#WeakMap)    
 ```js
-const itens = new WeakMap()
+const items = new WeakMap()
 class Stack {
     constructor (){
         items.set(this, [])
@@ -197,10 +197,31 @@ function validParentheses (str){
 |1.push 3|3|0|3|
 |2.push 4|3, 4|0, 0|3|
 |3.push 2|3, 4, 2|0, 0, 2|2|
-|4.push 1|3, 4, 2 ,1|0, 0,|2|,3	1|
+|4.push 1|3, 4, 2 ,1|0, 0, 2, 3|1|
 |5.pop	|3, 4, 2|0, 0, 2|2|
 |6.pop	|3, 4|0, 0|3|
 |7.push	|3, 4 ,0|0, 0, 2|0|
+
+使用示例如下：
+```js
+let stack = new Stack();
+stack.push(3);
+console.log('After push 3, Min item is', stack.min());
+stack.push(4);
+console.log('After push 4, Min item is', stack.min());
+stack.push(2);
+console.log('After push 2, Min item is', stack.min());
+stack.push(1);
+console.log('After push 1, Min item is', stack.min());
+stack.pop();
+console.log('After pop, Min item is', stack.min());
+stack.pop();
+console.log('After pop, Min item is', stack.min());
+stack.push(0);
+console.log('After push 0, Min item is', stack.min());
+```
+
+**提示：利用辅助栈（Web 端可利用数组），每次对栈 push/pop 元素时，也同时更新辅助栈（存储最小元素的位置）**   
 
 **方法1：小操作**   
 ```js

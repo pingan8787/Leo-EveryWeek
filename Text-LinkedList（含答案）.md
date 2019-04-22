@@ -52,6 +52,20 @@
 * `toString()`：由于列表项使用 `Node` 类，需要重写继承自 JavaScript 对象默认的 `toString()` 方法，让其只输出元素的值。   
 **提示：Web 端优先使用 ES6 以上的语法实现。**   
 
+
+* `append(element)`：向链表尾部添加一个新的元素。  
+* `insert(position, element)`：向链表指定位置插入一个新的元素。  
+* `remove(element)`：从链表中移除并返回已删除的元素（若有多个相同元素则取第一次出现的情况）。  
+* `getNode(index)`：获取指定索引位置的节点。  
+* `indexOf(element)`：返回元素在链表中的索引（若有多个相同元素则取第一次出现的情况），如果列表中没有该元素则返回 -1。  
+* `removeAt(position)`：从链表特定的位置移除一项。  
+* `getHead()`：获取链表头部。  
+* `getTail()`：获取链表尾部。  
+* `isEmpty()`：如果链表中不包含任何元素，返回 true，否则返回 false。  
+* `size()`：返回链表中元素个数，与数组的 length 属性类似。  
+* `print()`：打印链表中的所有元素，如 "0@1-->1@2-->2@3-->3@4-->4@5"（"index@element"）。  
+
+
 ----
 解析：   
 

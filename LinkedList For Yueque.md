@@ -241,7 +241,7 @@ class LinkedList {
             arr.push(index + '@' + current.element)
             current = current.next
         }
-        return arr..join('-->')
+        return arr.join('-->')
     }
 }
 ```
@@ -443,3 +443,188 @@ let reverseList = function(head) {
 正是因为这种变化，使得链表相邻节点之间不仅只有单向关系，还可以通过 `prev` 来访问当前节点的上一节点。
 
 **提示：更新原有的 Node 类，新增 prev 属性，为了实现代码复用，可以继承前面已实现的LinkedList类。**
+
+
+----
+解题：   
+```js
+class Node {
+    constructor(element){
+        this.element = element
+        this.next = null
+        this.prev = null
+    }
+}
+class DoubleLink {
+    constructor(){
+        this.length = 0
+        this.head = null
+        this.tail = null
+    }
+    /**
+     * 添加元素（末尾添加）
+     * @param {*} element 添加的元素
+     */
+    append(element){
+        let node = new Node(element)
+        let last = this.getTail()
+        last.next = node
+        node.previous = last
+        this.length ++
+    }
+    /**
+     * 添加元素（指定位置）
+     * @param {Number} position 添加的位置
+     * @param {*} element  添加的元素
+     */
+    insert(position, element){
+        if(!position || position < 0 || position > this.length) return new Error('请输入正确的数值！')
+        let node = new Node(element),
+            index = 0,
+            previous = null,
+            current = this.head
+        if(position === 0){
+            if(!this.head){
+                this.head = node
+                this.tail = node
+            }else{
+                node.next = current
+                current.prev = node
+                this.head = node
+            }
+        }else if(position === this.length){
+            current = this.tail
+            current.next = node
+            node.prev = current
+            this.tail = node
+        }else{
+            while(index++ < position){
+                previous = current
+                current = current.next
+            }
+            node.next = current
+            previous.next = node
+
+            current.prev = node
+            node.prev = previous
+        }
+        this.length ++
+    }
+    /**
+     * 删除元素
+     * @param {*} element 删除的元素
+     * @return {*}  被删除的元素
+     */
+    remove(element){
+        if (!element) return {}
+        let current = this.head,
+            previous = null
+        if(element === this.head.element){
+            this.head = current.next
+        }else{
+            while(current.next && current.element !== element){
+                previous = current
+                current = current.next
+            }
+            previous.next = current.next
+            this.length --
+            return current.element
+        }
+    }
+    /**
+     * 删除元素（指定位置）
+     * @param {Number} position 删除元素的位置
+     * @return {*}  被删除的元素
+     */
+    removeAt(position){
+        if (Number(position) === NaN || position < 0 || position > this.length) return {}
+        let current = this.head,
+            index = 0,
+            previous = null
+        if(position === 0){ // 删除第一项
+            this.head = current.next
+            if(this.length === 1){
+                this.tail = null
+            }else{
+                this.head.prev = null
+            }
+        }else if(position === this.length -1){
+            current = this.tail
+            this.tail = current.prev
+            this.tail.next = null
+        }else{
+            while(index++ < position){
+                previous = current
+                current = current.next
+            }
+            previous.next = current.next
+            current.next.prev = previous
+        }
+        this.length --
+        return current.element
+    }
+    /**
+     * 查找指定位置的元素
+     * @param {Number} index 查找的元素的下标
+     * @return {*} element 查找的元素
+     */
+    getNode(index){
+        if (Number(index) === NaN || index < 0 || index > this.length) return {}
+        if (index === 0) return this.head.element;
+        let current = this.head,
+            curIndex = 1
+        while (curIndex < index) {
+            current = current.next
+            curIndex ++
+        }
+        return current.element;
+    }
+    /**
+     * 查找指定元素的位置
+     * @param {*} element 查找的元素
+     * @return {Number} 查找的元素的下标
+     */
+    indexOf(element){
+        if (!element) return -1
+        let current = this.head, 
+            index = 0
+        while(current.next && current.element !== element){
+            current = current.next
+            index ++
+        }
+        return index === 0 ? -1 : index
+    }
+    /**
+     * 获取头元素
+     * @return {Number}
+     */
+    getHead(){
+        return this.getNode(0)
+    }
+    /**
+     * 获取尾元素
+     * @return {Number}
+     */
+    getTail(){
+        let current = this.head
+        while (current.next) {
+            current = current.next
+        } 
+        return current
+    }
+    /**
+     * 链表是否为空
+     * @return {Boolean}
+     */
+    isEmpty(){
+        return this.length === 0
+    }
+    /**
+     * 链表的长度
+     * @return {Number}
+     */
+    size(){
+        return this.length
+    }
+}
+```

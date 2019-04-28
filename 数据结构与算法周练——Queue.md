@@ -58,7 +58,7 @@ class Queue {
     }
     // dequeue()：移除队列的第一项，并返回被移除的元素。
     dequeue (){
-        return this.items.shift()
+        return this.items.shift() 
     }
     // front()：返回队列中第一个元素 —— 最先被添加，也将是最先被移除的元素。队列不做任何变动 (不移除元素，只返回元素信息 —— 与 Stack 类的 peek 方法类似)。
     front (){
@@ -66,7 +66,7 @@ class Queue {
     }
     // tail()：返回队列中的最后一个元素，队列不做任何变动。
     tail (){
-        return this.items[this.items.length]
+        return this.items[this.items.length-1]
     }
     // isEmpty()：如果栈没有任何元素就返回 true，否则返回 false。
     isEmpty (){

@@ -5,7 +5,7 @@
 下面是之前分享的链接：   
 * 1.[每周一练 之 数据结构与算法（Stack）](https://juejin.im/post/5cb2df0c5188251aca7340a0)   
 * 2.[每周一练 之 数据结构与算法（LinkedList）](https://juejin.im/post/5cbdbb1af265da036d79bb35)   
-* 2.[每周一练 之 数据结构与算法（Queue）](https://juejin.im/post/5cc3cbaaf265da03a85ac7f8)   
+* 3.[每周一练 之 数据结构与算法（Queue）](https://juejin.im/post/5cc3cbaaf265da03a85ac7f8)   
 
 > 欢迎关注我的 [个人主页](https://github.com/pingan8787) &&  [个人博客](http://www.pingan8787.com/) && [个人知识库](http://js.pingan8787.com/) && 微信公众号“前端自习课”
 

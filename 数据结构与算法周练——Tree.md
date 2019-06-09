@@ -1,3 +1,22 @@
+![封面](https://user-gold-cdn.xitu.io/2019/4/27/16a5cd3f25400f0f?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1)
+
+这是第六周的练习题，最近加班比较多，上周主要完成一篇 [GraphQL入门教程](https://juejin.im/post/5cd56b1f6fb9a0321e16bde3) ，有兴趣的小伙伴可以看下哈。    
+
+下面是之前分享的链接：   
+* 1.[每周一练 之 数据结构与算法（Stack）](https://juejin.im/post/5cb2df0c5188251aca7340a0)   
+* 2.[每周一练 之 数据结构与算法（LinkedList）](https://juejin.im/post/5cbdbb1af265da036d79bb35)   
+* 3.[每周一练 之 数据结构与算法（Queue）](https://juejin.im/post/5cc3cbaaf265da03a85ac7f8)   
+* 4.[每周一练 之 数据结构与算法（Set）](https://juejin.im/post/5cceee526fb9a0323a01c72e)   
+* 5.[每周一练 之 数据结构与算法（Dictionary 和 HashTable）](https://juejin.im/post/5ce2a196f265da1b7638738b)   
+
+> 欢迎关注我的 [个人主页](https://github.com/pingan8787) &&  [个人博客](http://www.pingan8787.com/) && [个人知识库](http://js.pingan8787.com/) && 微信公众号“前端自习课”
+
+
+**本周练习内容：数据结构与算法 —— Tree**   
+
+这些都是数据结构与算法，一部分方法是团队其他成员实现的，一部分我自己做的，有什么其他实现方法或错误，欢迎各位大佬指点，感谢。   
+
+
 ## 一、什么是树？   
 1.树有什么特点，什么是二叉树和二叉搜索树（BST: Binary Search Tree）？
 2.生活中常见的例子有哪些？
@@ -13,7 +32,7 @@
 * **父结点**和**子节点**是相对的。   
 
 2. 生活中的例子：    
-如：家谱或公司组织架构图。    
+如：家谱、公司组织架构图。    
 
 ## 二、请实现二叉搜索树（BST），并实现以下方法：   
 * `insert(key)`：向树中插入一个新的键；    
@@ -176,11 +195,23 @@ class BST {
 
 提示：
 
-* 先序：先访问根节点，然后以同样方式访问左子树和右子树；（根==>左==>右）    
+* 先序：先访问根节点，然后以同样方式访问左子树和右子树；（根==>左==>右） 
+
+输出 =》 11 7 5 3 6 9 8 10 15 13 12 14 20 18 25
+![tree_pre](http://images.pingan8787.com/20190520tree_pre.png)
+
 * 中序：先访问左子树，再访问根节点，最后访问右字数；以升序访问所有节点；（左==>根==>右）    
+
+输出 =》 3 5 6 7 8 9 10 11 12 13 14 15 18 20 25
+
+![tree_in](http://images.pingan8787.com/20190520tree_in.png)
+
 * 后序：先访问叶子节点，从左子树到右子树，再到根节点。（左==>右==>根）    
 
-![tree-traverse.png](https://cdn.nlark.com/yuque/0/2019/png/102778/1557793333713-82f91641-a0fd-4d3b-a886-6e009c64273a.png)
+输出 =》 3 6 5 8 10 9 7 12 14 13 18 25 20 15 11
+
+![tree_post](http://images.pingan8787.com/20190520tree_post.png)
+
 
 ---
 解析：   

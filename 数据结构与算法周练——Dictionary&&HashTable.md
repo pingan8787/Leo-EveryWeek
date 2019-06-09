@@ -1,3 +1,21 @@
+![封面](https://user-gold-cdn.xitu.io/2019/4/27/16a5cd3f25400f0f?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1)
+
+这是第五周的练习题，上周忘记发啦，这周是复习 **Dictionary 和 HashTable**。    
+
+下面是之前分享的链接：   
+* 1.[每周一练 之 数据结构与算法（Stack）](https://juejin.im/post/5cb2df0c5188251aca7340a0)   
+* 2.[每周一练 之 数据结构与算法（LinkedList）](https://juejin.im/post/5cbdbb1af265da036d79bb35)   
+* 3.[每周一练 之 数据结构与算法（Queue）](https://juejin.im/post/5cc3cbaaf265da03a85ac7f8)   
+* 4.[每周一练 之 数据结构与算法（Set）](https://juejin.im/post/5cceee526fb9a0323a01c72e)   
+
+> 欢迎关注我的 [个人主页](https://github.com/pingan8787) &&  [个人博客](http://www.pingan8787.com/) && [个人知识库](http://js.pingan8787.com/) && 微信公众号“前端自习课”
+
+
+**本周练习内容：数据结构与算法 —— Dictionary 和 HashTable**   
+
+这些都是数据结构与算法，一部分方法是团队其他成员实现的，一部分我自己做的，有什么其他实现方法或错误，欢迎各位大佬指点，感谢。   
+
+
 ## 一、字典和散列表的概念
 
 1. 字典是什么？
@@ -515,3 +533,6 @@ class HashTable {
     }
 }
 ```
+
+## 下周预告
+下周将练习 **Tree** 的题目。

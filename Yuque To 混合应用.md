@@ -216,9 +216,8 @@ Cordova 用的 WebView 可以给应用提供完整用户访问界面，使得应
 
 **缺点：**  
 
-
 * WebView性能低下时，用户体验差，反应慢；
-* 毕竟是老外的框架，中文文档资源少；
+* 中文文档资源少；
 * 调试不方便，既不像原生那么好调试，也不像纯web那种调试；
 
 
@@ -226,6 +225,108 @@ Cordova 用的 WebView 可以给应用提供完整用户访问界面，使得应
 
 Cordova 插件就是一些附加代码用来提供原生组件的 JavaScript 接口，它允许你的 App 可以使用原生设备的能力，超越了纯粹的 Web App。
 
+![cordova](http://images.pingan8787.com/20190623HybridApp6.png)
+
+#### 3.1 工作流程
+
+1. Cordova 发起对原生的请求：   
+
+```js
+cordova.exec(successCallback, failCallback, service, action, actionArgs); 
+// successCallback: 成功回调方法
+// failCallback: 失败回调方法
+// server: 所要请求的服务名字
+// action: 所要请求的服务具体操作
+// actionArgs: 请求操作所带的参数
+```
+
+2. 这五个参数并不是直接传给原生，Cordova JS 端会做以下处理：
+
+    * 为每个请求生成一个唯一标识( `callbackId` )，并传给原生端，原生端处理完后，会把 `callbackId` 连同处理结果一起返回给 JS 端；
+    * 以 `callbackId` 为 `key`，`{success:successCallback, fail:failCallback}` 为 `value`，把这个键值对保存在 JS 端的字典里，`successCallback` 与 `failCallback` 这两个参数不需要传给原生，原生返回结果时带上` callbackId`，JS 端就可以根据 `callbackId` 找到回调方法；
+    * 每次 JS 请求，最后发到原生的数据包括：`callbackId`, `service`, `action`, `actionArgs`；
+
+```js
+function iOSExec() {
+    ...
+    // 生成一个 callbackId 的唯一标识，并把此标志与成功、失败回调方法一起保存在 JS 端
+    // Register the callbacks and add the callbackId to the positional
+    // arguments if given.
+    if (successCallback || failCallback) {
+        callbackId = service + cordova.callbackId++;
+        cordova.callbacks[callbackId] =
+            {success:successCallback, fail:failCallback};
+    }
+
+    actionArgs = massageArgsJsToNative(actionArgs);
+
+    // 把 callbackId，service，action，actionArgs 保持到 commandQueue 中
+    // 这四个参数就是最后发给原生代码的数据
+    var command = [callbackId, service, action, actionArgs];
+    commandQueue.push(JSON.stringify(command));
+    ...
+}
+
+// 获取请求的数据，包括 callbackId, service, action, actionArgs
+iOSExec.nativeFetchMessages = function() {
+    // Each entry in commandQueue is a JSON string already.
+    if (!commandQueue.length) {
+        return '';
+    }
+    var json = '[' + commandQueue.join(',') + ']';
+    commandQueue.length = 0;
+    return json;
+};
+```
+
+3. 原生代码拿到 `callbackId`、`service`、`action` 及 `actionArgs` 后，会做以下处理：
+
+    * 根据 `service` 参数找到对应插件类；
+    * 根据 `action` 参数找到插件类中对应的处理方法，并把 `actionArgs` 作为处理方法请求参数的一部分传给处理方法；
+    * 处理完成后，把处理结果及 `callbackId` 返回给 JS 端，JS 端收到后会根据 `callbackId` 找到回调方法，并把处理结果传给回调方法；
+
+```
+- (void)sendPluginResult:(CDVPluginResult*)result callbackId:(NSString*)callbackId
+{
+    CDV_EXEC_LOG(@"Exec(%@): Sending result. Status=%@", callbackId, result.status);
+    // This occurs when there is are no win/fail callbacks for the call.
+    if ([@"INVALID" isEqualToString : callbackId]) {
+        return;
+    }
+    int status = [result.status intValue];
+    BOOL keepCallback = [result.keepCallback boolValue];
+    NSString* argumentsAsJSON = [result argumentsAsJSON];
+
+    // 将请求的处理结果及 callbackId 通过调用 JS 方法返回给 JS 端
+    NSString* js = [NSString stringWithFormat:
+                                @"cordova.require('cordova/exec').nativeCallback('%@',%d,%@,%d)", 
+                                callbackId, status, argumentsAsJSON, keepCallback];
+
+    [self evalJsHelper:js];
+}
+```
+
+4. JS 端根据 `callbackId` 回调 `cordova.js`
+
+
+```js
+// 根据 callbackId 及是否成功标识，找到回调方法，并把处理结果传给回调方法
+callbackFromNative: function(callbackId, success, status, args, keepCallback) {
+    var callback = cordova.callbacks[callbackId];
+    if (callback) {
+        if (success && status == cordova.callbackStatus.OK) {
+            callback.success && callback.success.apply(null, args);
+        } else if (!success) {
+            callback.fail && callback.fail.apply(null, args);
+        }
+
+        // Clear callback if not expecting any more results
+        if (!keepCallback) {
+            delete cordova.callbacks[callbackId];
+        }
+    }
+}
+```
 
 ### 四、什么是 JS Bridge，它的作用是什么
 

@@ -1,0 +1,327 @@
+### 一、什么是 Hybird App，与 Native App 及 Web App 有什么区别
+
+参考文章：
+
+1. [《Web App Hybrid App和 Native App的区别》](http://www.ionic.wang/article-index-id-58.html)
+
+2. [《Hybrid APP基础篇(二) -> Native、Hybrid、React Native、Web App方案的分析比较》](https://www.cnblogs.com/dailc/p/5930238.html)
+
+#### 1.1 主流应用类型
+
+随着现在移动互联网的快速发展，市面上目前主流移动应用程序主要分三类：**Web App**、 **Native App** 和 **Hybrid App**。
+
+三者大致关系如下：   
+
+![关系图](http://images.pingan8787.com/20190623HybridApp1.png)   
+
+#### 1.2 Web App
+
+**Web App**，即**移动端网站**，一般指的是基于 Web 的应用，基于**浏览器运行**，**无需下载安装**，基本上可以说是触屏版的网页应用。这类应用基本上是一个网页或一系列网页，旨在在移动屏幕上工作。
+
+**Web 网站**一般分为两种：
+
+1. **MPA**(Multi-page Application)
+
+2. **SPA**(Single-page Application)
+
+一般的 **Web App** 是指 **SPA** 形式开发的网站。  
+
+
+**优点：**
+
+* 开发和维护成本低，可以跨平台，调试方便；
+
+前端人员开发的代码，可应用于各大主流浏览器(特殊情况可以代码进行下兼容)，没有新的学习成本，而且可以直接在浏览器中调试。 
+
+* 更新最为快速；
+
+由于web app资源是直接部署在服务器端的，所以只需替换服务器端文件，用户访问是就已经更新了(当然需要解决一些缓存问题)。 
+
+* 无需安装App，不会占用手机内存；
+
+通过浏览器即可访问，无需安装，用户使用成本更低。 
+
+**缺点：**
+
+* 性能低，用户体验差；
+
+由于是直接通过的浏览器访问，所以无法使用原生的API，操作体验不好。 
+
+* 依赖于网络，页面访问速度慢，耗费流量；
+
+Web App每次访问都必须依赖网络，从服务端加载资源，当网速慢时访问速度很不理想，特别是在移动端，对网站性能优化要求比较高。 
+
+* 功能受限，大量功能无法实现；
+
+只能使用 HTML5 的一些特殊 API ，无法调用原生 API ，所以很多功能存在无法实现情况。 
+
+* 临时性入口，用户留存率低；
+
+这既是它的优点，也是缺点，优点是无需安装，确定是用完后有时候很难再找到，或者说很难专门为某个web app留存一个入口，导致用户很难再次使用。 
+
+#### 1.3 Native App
+
+**Native APP** 指的是原生程序，需要用户下载安装使用，一般依托于操作系统，有很强的交互，是一个完整的App，可拓展性强，能发布应用商店。
+
+目前市面上主流的平台有：**Android** 和 **iOS**。
+
+
+**优点：**  
+
+* 直接依托于操作系统，**用户体验好**，**操作流畅**，**性能稳定**；
+
+* 用户留存率高；  
+
+* 功能最为强大，特别是在与系统交互中，几乎所有功能都能实现；
+
+由于 **Native APP** 是直接依托于系统，所以可以直接调用官方提供的API，功能最为全面(比如本地资源操作，通知，动画等)。
+
+**缺点：**   
+
+* 开发和维护成本高，无法跨平台，需要各平台各自独立开发；
+
+**Android** 上基于 **Java** 开发，**iOS** 上基 **OC** 或 **Swift** 开发，相互之间独立，必须要有各自的开发人员。
+
+* 门槛较高，原生人员有一定的入门门槛，人才较少；
+
+原生的一个很大特点就是独立，所以不太容易入门，而且 **Android**， **iOS**都需要独立学习。
+
+* 分发成本高，更新缓慢，特别是发布应用商店后，需要等到审核周期；
+
+原生应用更新是一个很大的问题， **Android**中还能直接下载整包APK进行更新，但是 **iOS**中，如果是发布 **AppStore** ，必须通过 **AppStore**地址更新，而每次更新都需要审核，所以无法达到及时更新。
+
+#### 1.4 Hybrid App
+
+**Hybrid App** 指的是**混合开发**，也就是半原生半 Web 的开发模式，有跨平台效果，当然了，实质最终发布的仍然是独立的原生APP(各种的平台有各种的SDK)。  
+
+**优点：**
+
+* **学习和开发成本较低，可以跨平台，调试方便**；  
+
+Hybrid 开发模式下，由原生提供统一的 API 给 JS 调用，实际的主要逻辑由 HTML 和 JS 完成，最终放在 webview 中显示，这样只需要写一套代码即可，达到跨平台效果，另外也可以直接在浏览器中调试，很方便。  
+
+一般 Hybrid 中的跨平台最少可以跨三个平台: Android App ，iOS App ，普通webkit浏览器。 
+
+需要前端人员关注一些原生提供的API，具体的实现无需关心，没有新的学习内容。  
+
+* **维护成本低**，功能可复用，并且更容易更新；  
+
+虽然没有 web app 更新那么快速，但是 Hybrid 中也可以通过原生提供 api ，进行资源主动下载，达到只更新资源文件，不更新 apk(ipa) 的效果。  
+
+
+* 功能更加完善，性能和体验要比起 web app 好太多；  
+
+因为可以调用原生api，所以很多功能只要原生提供出就可以实现，另外性能也比较接近原生。  
+
+* 部分性能要求的页面可用原生实现；  
+
+这种模式是原生混合 web ，所以我们完全可以将交互强，性能要求高的页面用原生写，然后一些其它页面用 JS 写，嵌入 webview 中，达到最佳体验。  
+
+**缺点：**
+
+* 相比原生，性能仍然有较大损耗；
+
+这种模式受限于 webview 的性能，相比原生而言有不少损耗，体验无法和原生相比。
+
+* 不适用于交互性较强的app；
+
+这种模式的主要适用：一些新闻阅读类，信息展示类的 app ，不适用于一些交互较强或者性能要求较高的 app (比如动画较多就不适合)。
+
+
+#### 1.5 三者区别
+
+**三者技术特征对比：**
+
+![对比图](http://images.pingan8787.com/20190623HybridApp2.png)
+
+**另外增加 ReactNative 一起放入作对比。**
+
+||NativeApp|WebApp|HybridApp|ReactNativeApp|
+|:---|:---|:----|:---|---|
+|原生功能体验|优秀|差|良好|接近优秀|
+|渲染性能|非常快|慢|接近快|快|
+|是否支持设备底层访问|支持|不支持|支持|支持|
+|网络要求|支持离线|依赖网络|支持离线(资源存本地情况)|支持离线|
+|更新复杂度|高(几乎总是通过应用商店更新)|低(服务器端直接更新)|较低(可以进行资源包更新)|较低(可以进行资源包更新)|
+|编程语言|Android(Java)，iOS(OC/Swift)|js+html+css3|js+html+css3|主要使用JS编写，语法规则JSX|
+|社区资源|丰富(Android，iOS单独学习)|丰富(大量前端资源)|有局限(不同的Hybrid相互独立)|丰富(统一的活跃社区)|
+|上手难度|难(不同平台需要单独学习)|简单(写一次，支持不同平台访问)|简单(写一次，运行任何平台)|中等(学习一次，写任何平台)|
+|开发周期|长|短|较短|中等|
+|开发成本|昂贵|便宜|较为便宜|中等|
+|跨平台|不跨平台|所有H5浏览器|Android，iOS，h5浏览器|Android，iOS|
+|APP发布|AppStore|Web服务器|AppStore|AppStore|
+   
+#### 1.6 三者如何选择
+
+这里简单介绍几种情况，具体还是要以实际项目技术评估结果为主。  
+
+* 选择纯 Native App 模式的情况：
+
+**性能要求极高，体验要求极好，不追求开发效率**。
+
+* 选择 Web App 模式的情况：
+
+不追求用户体验和性能，对离线访问没要求，正常来说，如果追求性能和体验，都不会选用web app。
+
+* 选择 Hybrid App 模式的情况
+
+**大部分情况下的App都推荐采用这种模式**，这种模式可以用原生来实现要求高的界面，对于一些比较通用型，展示型的页面完全可以用web来实现，达到跨平台效果，**提升效率**。一般好一点的Hybrid方案，都会**把资源放在本地**的，可以**减少网络流量消耗**。
+
+* 选择React Native App模式的情况
+
+追求性能，体验，同时追求开发效率，而且有一定的技术资本，舍得前期投入。
+
+React Native这种模式学习成本较高，所以需要前期投入不少时间才能达到较好水平，但是有了一定水准后，开发起来它的优势就体现出来了，性能不逊色原生，而且开发速度也很快
+
+### 二、什么是 Cordova，它的优缺点是什么
+
+参考文章： [《浅谈Cordova框架》](https://blog.csdn.net/weixin_37730482/article/details/73920722)
+
+#### 2.1 Cordova 简介 
+
+Cordova 是一个用基于 HTML、CSS 和 JavaScript 的，**用于创建跨平台移动应用程序的快速开发平台**。它使开发者能够利用iPhone、Android、Palm、Symbian、WP7、Bada和Blackberry等智能手机的核心功能——包括地理定位、加速器、联系人、声音和振动等，此外 Cordova 拥有丰富的插件，可以调用。
+
+也可以用来开发**原生和WebView组件之间的插件接口**。
+
+**来源：**  
+Cordova 是 PhoneGap 贡献给 Apache 后的开源项目，是从 PhoneGap 中抽出的核心代码，是驱动 PhoneGap 的核心引擎。可以把它们的关系想象成类似于 Webkit 和 Google Chrome 的关系。
+
+#### 2.2 Cordova 架构图 
+
+![Cordova架构图](http://images.pingan8787.com/20190623HybridApp3.jpg)  
+
+**架构图介绍：**   
+
+* Web App
+
+用于存放我们程序的代码，包括业务逻辑，还有一些运行需要的资源（如：CSS，JavaScript，图片，媒体文件等）。
+应用的实现是通过 web 页面，默认的本地文件名称是 `index.html` ，应用执行在原生应用包装的 WebView 中，这个原生应用是你分发到应用商店中的。
+
+* WebView
+
+Cordova 用的 WebView 可以给应用提供完整用户访问界面，使得应用混合了 Webview 和原生的应用组件。
+
+* Cordova Plugins
+
+插件是 Cordova 生态系统的重要组成部分。它**提供了 Cordova 和原生组件相互通信的接口**，并绑定到了标准的设备API上，这使你能够**通过 JavaScript 调用原生代码**。
+
+
+#### 2.3 优缺点
+
+**优点：**  
+
+* 跨平台，开发简单，学习成本低；
+* 框架多，插件多，可自定义插件；
+* 发展最早，社区资源丰富；
+
+**缺点：**  
+
+
+* WebView性能低下时，用户体验差，反应慢；
+* 毕竟是老外的框架，中文文档资源少；
+* 调试不方便，既不像原生那么好调试，也不像纯web那种调试；
+
+
+### 三、Cordova 插件的原理是什么
+
+Cordova 插件就是一些附加代码用来提供原生组件的 JavaScript 接口，它允许你的 App 可以使用原生设备的能力，超越了纯粹的 Web App。
+
+
+### 四、什么是 JS Bridge，它的作用是什么
+
+参考文章：[《JSBridge的原理》](https://juejin.im/post/5abca877f265da238155b6bc)
+
+#### 4.1 JS Bridge 介绍
+
+JSBridge 简单来讲，主要是 **给 JavaScript 提供调用 Native 功能的接口**，让混合开发中的**前端部分**可以方便地使用地址位置、摄像头甚至支付等 Native 功能。
+
+JSBridge 就像其名称中的 **“Bridge”** 的意义一样，**是 Native 和非 Native 之间的桥梁**，它的核心是 **构建 Native 和非 Native 间消息通信的通道，而且是 双向通信的通道**。
+
+JSBridge 另一个叫法及大家熟知的 Hybrid app 技术。
+
+![brige](http://images.pingan8787.com/20190623HybridApp4.png)
+
+所谓 **双向通信的通道**:
+
+* JS 向 Native 发送消息 : 
+
+调用相关功能、通知 Native 当前 JS 的相关状态等。
+
+* Native 向 JS 发送消息 : 
+
+回溯调用结果、消息推送、通知 JS 当前 Native 的状态等。
+
+#### 4.2. JS Bridge 实现原理
+
+参考文章：[《Hybrid APP基础篇(四)->JSBridge的原理》](https://www.cnblogs.com/dailc/p/5931324.html)
+
+![brige原理](http://images.pingan8787.com/20190623HybridApp5.png)
+
+**流程：**
+
+H5 -> 通过某种方式触发一个 `url scheme `-> Native捕获到 `url scheme`，进行分析 -> 原生做处理 -> Native调用H5的JSBridge对象传递回调。
+
+原生的 WebView/UIWebView 控件已经能够和 JS 实现数据通信了，那为什么还要 JSBridge呢？
+
+其实使用JSBridge有很多方面的考虑：
+
+* Android4.2以下，`addJavascriptInterface` 方式有安全漏掉。
+* iOS7以下，JS 无法调用 Native。
+* `url scheme` 交互方式是一套现有的成熟方案，可以完美兼容各种版本，对以前老版本技术的兼容。
+
+
+### 五、请列举 Android 与 iOS 平台下 JS Bridge 的实现方式
+
+参考文章：[《JSBridge 介绍及实现原理》](coolnuanfeng.github.io/jsbridge)
+
+#### 5.1 Android 实现方式
+
+Web 和 Android 之间有协议规范，对于传输的信息，Javascript 和 Java 用规定好的方式来编码和解码。
+
+Javascript 执行以下四种行为会被 Java 提供的 Webview 实例监听到，箭头后面是对应触发的 Java 方法。
+
+```
+1、window.alert     => onJSAlert
+2、window.confirm   => onJSConfirm
+3、window.prompt    => onJsPrompt
+4、window.location  => shouldOverrideUrlLoading
+```
+
+然后指定协议规范：   
+
+使用如 `jsbridge://toast?message` 的协议，其中 `jsbridge` 是 `scheme` ，表示我们用的是某种自定义协议。`toast` 是方法名，也就是我们希望调用的系统的方法名。`message` 是调用方法所需要的参数。   
+
+**更多资料：**   
+
+* [Android JSBridge的原理与实现](https://blog.csdn.net/sbsujjbcy/article/details/50752595)
+* [SBridge实现原理探索](https://github.com/youngwind/blog/issues/76)
+* [JsBridge 实现 JavaScript 和 Java 的互相调用](https://juejin.im/entry/573534f82e958a0069b27646)
+
+#### 5.2 iOS 实现方式
+
+iOS 实现与 Android 第4种方式相同。
+
+Javascript调用Native，并没有现成的API可以直接拿来用，而是需要间接地通过一些方法来实现。UIWebView 有个特性：在 UIWebView 内发起的所有网络请求，都可以通过 delegate 函数在 Native 层得到通知。这样，我们就可以在 UIWebView 内发起一个自定义的网络请求，通常是这样的格式：`jsbridge://methodName?param1=value1&param2=value2`。   
+
+于是在 UIWebView 的 `delegate` 函数中，我们只要发现是 `jsbridge://` 开头的地址，就不进行内容的加载，转而执行相应的调用逻辑。   
+
+首先通过 iframe 发起一个网络请求，这个请求的作用是唤起 Native APP 的分享组件，将网页分享到朋友圈或分享给其他好友。JS端的核心代码如下所示：    
+
+```js
+const url = 'jsbridge://doAction?title=分享标题&desc=分享描述&link=http%3A%2F%2Fwww.baidu.com';
+let iframe = document.createElement('iframe');
+iframe.style.width = '1px';
+iframe.style.height = '1px';
+iframe.style.display = 'none';
+iframe.src = url;
+document.body.appendChild(iframe);
+setTimeout(function() {
+    iframe.remove();
+}, 100);
+```
+
+
+**更多资料：**   
+
+* [理解JSBridge](http://travelchu.com/2016/03/14/%E7%90%86%E8%A7%A3JSBridge/)
+* [JSBridge——Web与Native交互之iOS篇](https://www.jianshu.com/p/9fd80b785de1)

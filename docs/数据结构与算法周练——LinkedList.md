@@ -343,7 +343,7 @@ let reverseList = function(head) {
 输出：true
 解释：链表中有一个环，其尾部连接到第二个节点。
 ```
-![示例 1](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist.png)
+![示例 1](http://images.pingan8787.com/20190702add1.png)
 
 **示例 2：**   
 ```
@@ -351,7 +351,7 @@ let reverseList = function(head) {
 输出：true
 解释：链表中有一个环，其尾部连接到第一个节点。
 ```
-![示例 2](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png)
+![示例 2](http://images.pingan8787.com/20190702add2.png)
 
 **示例 3：**   
 ```
@@ -359,7 +359,7 @@ let reverseList = function(head) {
 输出：false
 解释：链表中没有环。
 ```
-![示例 3](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test3.png)
+![示例 3](http://images.pingan8787.com/20190702add3.png)
 
 
 

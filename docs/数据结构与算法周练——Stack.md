@@ -15,7 +15,7 @@
 * 特点：**先进后出，后进先出**。
 * 例子：一叠书、一叠盘子。
 
-![栈](https://user-gold-cdn.xitu.io/2019/4/14/16a176f8ddc1b842?w=739&h=361&f=png&s=39564)
+![栈](http://images.pingan8787.com/20190702add.png)
 
 ## 二、实现一个栈，并实现下面方法
 * `push(element)`：添加一个新元素到栈顶。  

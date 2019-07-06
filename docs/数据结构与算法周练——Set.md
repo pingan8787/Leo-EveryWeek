@@ -1,5 +1,3 @@
-![封面](https://user-gold-cdn.xitu.io/2019/4/27/16a5cd3f25400f0f?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1)
-
 这是第四周的练习题，五一放假结束，该收拾好状态啦。    
 
 下面是之前分享的链接：   

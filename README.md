@@ -18,6 +18,8 @@
 
 1. [《混合应用专题周练》](https://github.com/pingan8787/Leo-EveryWeek/blob/master/docs/%E6%B7%B7%E5%90%88%E5%BA%94%E7%94%A8%E4%B8%93%E9%A2%98%E5%91%A8%E7%BB%83.md)
 
+1. [《混合应用专题周练2》](https://github.com/pingan8787/Leo-EveryWeek/blob/master/docs/%E6%B7%B7%E5%90%88%E5%BA%94%E7%94%A8%E4%B8%93%E9%A2%98%E5%91%A8%E7%BB%832.md)
+
 
 希望自己的文章会对各位有所帮助，也欢迎各位大佬指点。 
 
@@ -31,4 +33,4 @@
 |ES小册|js.pingan8787.com|
 
 ## 微信公众号
-![bg](http://images.pingan8787.com/fe_bg.png)  
+![bg](http://images.pingan8787.com/2019_07_12guild_page.png)  

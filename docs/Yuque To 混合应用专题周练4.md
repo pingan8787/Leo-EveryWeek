@@ -328,6 +328,91 @@ cordova.define("fxp-cordova-plugins.ToastDemo",
 
 ### 三、请选择一个你比较熟悉的 ionic-native 插件，介绍其功能、使用方式及运行原理。
 
+Ionic Native 对开源的 Cordova 插件进行了封装，让我们更容易的在 Ionic 中使用 Cordova 插件。
+
+Ionic Native 将 Cordova 封装成 Promise or Observable 的对象，并为所有的插件提供一个通用的接口。
+
+让我们更方便的在 Ionic 调用手机原生的功能。 Cordova 能实现的功能在 Ionic 中都可以实现。
+
+接下来以 `StatusBar` 插件为例：
+
+> 参考文章：[《Status Bar》](http://www.ionic.wang/native_doc-index-id-263.html)
+
+#### 3.1 插件介绍和安装
+
+该 `StatusBar` 对象提供了一些自定义 iOS 和 Android  `StatusBar` 的功能。
+
+这里可以查看 Cordova 的 StatusBar 文档：[查看 StatusBar](https://github.com/apache/cordova-plugin-statusbar)。
+
+#### 3.2 插件安装
+
+```shell
+$ ionic cordova plugin add cordova-plugin-statusbar
+$ npm install @ionic-native/status-bar
+```
+
+查询当前项目有哪些插件：
+
+```shell
+ionic plugin list
+```
+
+插件支持平台： 
+
+
+#### 3.3 插件使用
+
+添加插件：
+```js
+// app.module.ts文件
+import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { MyApp } from './app.component';
+
+
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import {Camera} from "@ionic-native/camera";
+
+@NgModule({
+  declarations: [
+    MyApp,
+  ],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(MyApp)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+  ],
+  providers: [
+    StatusBar,
+    // 添加插件
+    Camera,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+  ]
+})
+export class AppModule {}
+```
+
+使用插件
+```js
+// home.ts使用文件
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+
+export class HomePage {
+    constructor(private statusBar: StatusBar) { }
+
+    // let status bar overlay webview
+    this.statusBar.overlaysWebView(true);
+
+    // set status bar to white
+    this.statusBar.backgroundColorByHexString('#ffffff');
+}
+```
 
 ### 四、请介绍一下开发 ionic-native 插件的主要流程和注意事项。
 

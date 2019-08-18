@@ -56,6 +56,7 @@
 * [《CSS Weekly》](https://css-weekly.com/)
 * [《JavaScript Weekly》](https://javascriptweekly.com/issues)
 * [《阮一峰科技爱好者周刊》](http://www.ruanyifeng.com/blog/weekly/)
+* [《Android 开发技术周报》](https://androidweekly.io)
 
 4. 工具类公众号参考：
 

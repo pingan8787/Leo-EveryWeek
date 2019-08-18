@@ -87,7 +87,7 @@
 
 ### 3. OpenFlutter - 日更的 FlutterDemo 合集
 
-这是一个包含许多 flutter 相关功能 demo 的集合，它能够帮助您快速学习一些零碎的知识。
+这是一个包含许多 Flutter 相关功能 demo 的集合，它能够帮助您快速学习一些零碎的知识。
 
 > 开源项目组织：OpenFlutter  
 > [开源项目地址：](https://github.com/OpenFlutter/Flutter-Notebook) https://github.com/OpenFlutter/Flutter-Notebook

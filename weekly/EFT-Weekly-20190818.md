@@ -96,7 +96,7 @@
 
 程序员是最勤奋的一批人，也是最懒的一批人。
 时刻保持学习，但能自动完成的绝对不去手写。
-eecg-boot，它是一款**基于代码生成器的 JAVA 快速开发平台**，**全新架构前后端分离**：SpringBoot 2.x，Ant Design&Vue，Mybatis，Shiro，JWT。
+jeecg-boot，它是一款**基于代码生成器的 JAVA 快速开发平台**，**全新架构前后端分离**：SpringBoot 2.x，Ant Design&Vue，Mybatis，Shiro，JWT。
 
 > 开源项目作者：zhangdaiscott
 > [开源项目地址：](https://github.com/zhangdaiscott/jeecg-boot) https://github.com/zhangdaiscott/jeecg-boot

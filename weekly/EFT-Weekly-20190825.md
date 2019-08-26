@@ -50,7 +50,7 @@
 
 qrcode 工具可以生成普通二维码、带图片的艺术二维码（黑白与彩色）、动态二维码（黑白与彩色）。
 
-> ![qr2.1](http://images.pingan8787.com/20190825_qr2.1.png) 
+> ![qr2.1](http://images.pingan8787.com/20190825_qr2.1.png)     
 > 开源项目作者：sylnsfar    
 > [开源项目地址：](https://github.com/sylnsfar/qrcode) https://github.com/sylnsfar/qrcode    
 
@@ -59,7 +59,7 @@ qrcode 工具可以生成普通二维码、带图片的艺术二维码（黑白�
 一个可以让你通过拖曳上传内容的 JavaScript 库。Filepond 21 KB大小，可用于 Vue、React、Angular，它还支持图像的编辑裁剪功能。
   
   
-> ![qr2.2](http://images.pingan8787.com/20190825_qr2.2.png) 
+> ![qr2.2](http://images.pingan8787.com/20190825_qr2.2.png)     
 > 开源项目作者：pqina   
 > [开源项目地址：](https://github.com/pqina/filepond) https://github.com/pqina/filepond
 
@@ -68,7 +68,7 @@ qrcode 工具可以生成普通二维码、带图片的艺术二维码（黑白�
 这个项目是一份正则表达式的学习文档，除了文档，还有一个配套的网站，供学习者边学习边在线练习，而且支持好几种语言，很方便。
 
 
-> ![qr2.3](http://images.pingan8787.com/20190825_qr2.3.png) 
+> ![qr2.3](http://images.pingan8787.com/20190825_qr2.3.png)     
 > 开源项目组织：Zeeshan Ahmad    
 > [开源项目地址：](https://github.com/ziishaned/learn-regex) https://github.com/ziishaned/learn-regex
 
@@ -77,7 +77,7 @@ qrcode 工具可以生成普通二维码、带图片的艺术二维码（黑白�
 项目中详细的解释了 Chrome 插件开发的知识点，可以说是非常详尽了。
 
 
-> ![qr2.4](http://images.pingan8787.com/20190825_qr2.4.png) 
+> ![qr2.4](http://images.pingan8787.com/20190825_qr2.4.png)     
 > 开源项目作者：zhangdaiscott
 > [开源项目地址：](https://github.com/sxei/chrome-plugin-demo) https://github.com/sxei/chrome-plugin-demo
 
@@ -85,7 +85,7 @@ qrcode 工具可以生成普通二维码、带图片的艺术二维码（黑白�
 
 这个开源项目是带有中国风气质的 React 组件，有一股浓浓的中国风，而且还有点萌，真的是萌萌哒！
 
-> ![qr2.5](http://images.pingan8787.com/20190825_qr2.5.png) 
+> ![qr2.5](http://images.pingan8787.com/20190825_qr2.5.png)     
 > 开源项目组织：zhui-team
 > [开源项目地址：](https://github.com/zhui-team/zhui) https://github.com/zhui-team/zhui
 

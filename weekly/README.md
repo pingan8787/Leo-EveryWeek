@@ -65,6 +65,7 @@
 5. 其他类网站参考：
 
 * [Github Trending](https://github.com/trending)
+* [Githubs](https://www.githubs.cn/)   
 
 ### 四、 参考来源（来源用户）
 

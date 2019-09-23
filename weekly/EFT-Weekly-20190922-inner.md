@@ -1,6 +1,16 @@
 > 《EFT - Weekly》第六期 - 20190922
 
-## 一、大前端 - 精选
+## 一、EFT - 推荐
+
+这部分内容，来源于**职行力APP社区**，欢迎小伙伴们在**社区**中一起分享~  
+
+1. [【帖子】中台技术全解析](https://res.exexm.com/shareV14/post.html?t=5248733569949934572#d1aae749-98fb-4cb2-b624-10e1e3b00b67) 
+
+2. [【帖子】运营就像面点师傅通过各种机器把面、水、葡萄干等各种物品巧妙揉合在一起然后做成一个蛋糕或面包，通过运营把一个个体有效整合成一个物品且让此物品变得更优秀或完美。](https://res.exexm.com/shareV14/post.html?t=5248734467998832069#/3435ccd9-25ca-47e0-a660-3aa249df8f2d) 
+
+3. [【帖子】产品经理都知道的数据埋点的基础认识](https://res.exexm.com/shareV14/post.html?t=5248733568549358206#e6d25758-582f-4987-b923-02c8efcf905f) 
+
+## 二、大前端 - 精选
 
 ### 1. 【Web】小tips: 元素 focus 页面不滚动不定位的JS处理
 
@@ -39,7 +49,7 @@ Android 使用 `Camera API` + `SurfaceView `方式进行预览拍照。
 > [文章地址：](https://juejin.im/post/5d81ff45e51d453b1d648393)https://juejin.im/post/5d81ff45e51d453b1d648393
 
 
-## 二、Github - 热门
+## 三、Github - 热门
 
 ### 1. Flight Rules - Git 飞行规则
 
@@ -66,7 +76,7 @@ ReviewDog 通过解析 `Lint` 的输出结果，与代码提交的 `Diff` 进行
 > [开源项目地址：](https://github.com/reviewdog/reviewdog) https://github.com/reviewdog/reviewdog   
 
 
-## 三、资料 - 分享
+## 四、资料 - 分享
 
 ### 1. 「框架篇」React 中 的 9 种优化技术
 
@@ -94,7 +104,7 @@ ReviewDog 通过解析 `Lint` 的输出结果，与代码提交的 `Diff` 进行
 > ![qr3.1](http://eftcdn.exexm.com/weekly/20190922/20190922_qr3.5.png)   
 > [文章地址：](https://mp.weixin.qq.com/s/ap0-STJvnAvu3gGyfDgp5A) https://mp.weixin.qq.com/s/ap0-STJvnAvu3gGyfDgp5A
 
-## 四、编程 - 之外
+## 五、编程 - 之外
 
 ### 1. 三星终于坐不住了，骁龙855＋曲面2K屏，降价狙击苹果华为
 
@@ -124,10 +134,11 @@ ReviewDog 通过解析 `Lint` 的输出结果，与代码提交的 `Diff` 进行
 
 本期编辑：
 
-* 【一、大前端 - 精选】：龚楚龙
-* 【二、Github - 热门】：王平安
-* 【三、资料 - 分享】：强永宁
-* 【四、编程 - 之外】：强永宁
+* 【一、EFT - 推荐】：李德昌
+* 【二、大前端 - 精选】：龚楚龙
+* 【三、Github - 热门】：王平安
+* 【四、资料 - 分享】：强永宁
+* 【五、编程 - 之外】：强永宁
 
 汇总：王平安
 

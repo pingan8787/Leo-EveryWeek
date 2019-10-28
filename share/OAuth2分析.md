@@ -144,8 +144,11 @@ https://b.com/oauth/authorize?
 其中：
 
 `response_type` 参数表示要求返回授权码（code）;
+
 `client_id` 参数让 B 知道是谁在请求;
+
 `redirect_uri` 参数是 B 接受或拒绝请求后的跳转网址;
+
 `scope` 参数表示要求的授权范围（这里是只读）;
 
 2. 在 B 网站中，当用户同意授权 A 网站，则 B 网站会携带授权码，重定向到 `redirect_uri` 参数指定的网址，就像下面这样：
@@ -165,13 +168,13 @@ https://b.com/oauth/token?
        redirect_uri=CALLBACK_URL
 ```
 
-* `client_id` 参数和 `client_secret` 参数用来让 B 确认 A 的身份（ `client_secret` 参数是保密的，因此只能在后端发请求）;
+`client_id` 参数和 `client_secret` 参数用来让 B 确认 A 的身份（ `client_secret` 参数是保密的，因此只能在后端发请求）;
 
-* `grant_type` 参数的值是 `AUTHORIZATION_CODE` ，表示**采用的授权方式是授权码**;
+`grant_type` 参数的值是 `AUTHORIZATION_CODE` ，表示**采用的授权方式是授权码**;
 
-* `code` 参数是上一步拿到的授权码;
+`code` 参数是上一步拿到的授权码;
 
-* `redirect_uri` 参数是令牌颁发后的回调网址;
+`redirect_uri` 参数是令牌颁发后的回调网址;
 
 4. B 网站接受请求并验证身份，身份验证通过后，会发放令牌。向`redirect_uri` 指定的网址，发送包含令牌 `access_token` 字段的JSON数据，流程完毕。
 

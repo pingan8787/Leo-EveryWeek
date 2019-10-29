@@ -101,7 +101,7 @@
 
 学习和理解的成本比较大，并且 OAuth2 不是一个严格的标准协议，在实施过程中更容易出错。
 
-## 三、OAuth2 四种授权模式
+## 四、OAuth2 四种授权模式
 
 通过前面描述，可以知道**OAuth 的核心就是向第三方应用颁发令牌。**
 
@@ -249,6 +249,30 @@ https://oauth.b.com/token?
 风险较大，一般适用在对应用高度信任的情况。
 
 ### 4. 客户端凭证（client credentials）
+
+即：**给出凭证让对方确认并提供令牌**。
+
+#### 流程分析
+
+1. A 应用在命令行向 B 发出请求。
+
+```sh
+https://oauth.b.com/token?
+  grant_type=client_credentials&
+  client_id=CLIENT_ID&
+  client_secret=CLIENT_SECRET
+```
+
+`grant_type` 参数等于 `client_credentials` 表示采用凭证式；
+`client_id` 和 `client_secret` 用来让 B 确认 A 的身份。
+
+2. B 网站验证身份后返回令牌。
+
+这种方式给出的令牌，是针对第三方应用的，而不是针对用户的，即有可能多个用户共享同一个令牌。
+
+**适用场景：**
+
+通过命令行请求令牌。
 
 #### 流程分析
 

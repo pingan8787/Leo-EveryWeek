@@ -278,6 +278,31 @@ https://oauth.b.com/token?
 
 ![20191028-OAuth2-06.png](http://images.pingan8787.com/blog/20191028-OAuth2-06.png)
 
+## 五、使用令牌
+
+当网站获取到令牌以后，接下来每个 API 请求都需要带上令牌，其做法是在请求的头信息中，将令牌添加 `Authorization` 字段中。
+
+## 六、更新令牌
+
+当令牌有效期到了，OAuth2 允许用户自动更新令牌，而不用让用户重新授权获取新令牌。
+
+**具体流程：**
+
+在 B 网站发放令牌时，一次性发放 2 个令牌，一个用于获取数据，一个用于获取新的令牌（`refresh token` 字段）。令牌到期后，用户使用 `refresh token` 发送请求去更新令牌：
+
+```sh
+https://b.com/oauth/token?
+  grant_type=refresh_token&
+  client_id=CLIENT_ID&
+  client_secret=CLIENT_SECRET&
+  refresh_token=REFRESH_TOKEN
+```
+`grant_type` 参数为 `refresh_token` 表示要求更新令牌;
+`client_id` 参数和 `client_secret` 参数用于确认身份;
+`refresh_token` 参数就是用于更新令牌的令牌。
+
+B 网站验证通过以后，就会颁发新的令牌。
+
 ## 参考文章
 
 1. 部门内部培训资料

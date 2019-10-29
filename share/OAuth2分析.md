@@ -118,21 +118,21 @@ OAuth 2.0 规定了四种获得令牌的流程。你可以选择最适合自己�
 
 这是为了防止令牌被滥用，没有备案过的第三方应用，是不会拿到令牌的。
 
-### 1. 授权码
+### 1. 授权码（authorization code）
 
 即**第三方应用先申请一个授权码，然后再用该码获取令牌**。
 
-适用于有后端的 Web 应用，授权码通过前端传送，令牌则是储存在后端，而且所有与资源服务器的通信都在后端完成。这样的前后端分离，可以避免令牌泄漏。
+适用于**有后端的 Web 应用**，授权码通过前端传送，**令牌则是储存在后端**，而且所有与资源服务器的通信都在后端完成。这样的前后端分离，可以避免令牌泄漏。
 
-这种方式也是最常用的流程，安全性最高。
+这种方式也是**最常用的流程，安全性最高**。
 
-整体流程如下：
+#### 整体流程
 
 ![20191028-OAuth2-04.png](http://images.pingan8787.com/blog/20191028-OAuth2-04.png)
 
 （配图来自**阮一峰大佬**）
 
-步骤分析：
+#### 步骤分析
 
 1. 用户从 A 网站跳转到 B 网站，请求用户确认授权，以获取授权码，其发送链接示意如下：
 
@@ -180,16 +180,83 @@ https://b.com/oauth/token?
 
 4. B 网站接受请求并验证身份，身份验证通过后，会发放令牌。向`redirect_uri` 指定的网址，发送包含令牌 `access_token` 字段的JSON数据，流程完毕。
 
-### 2. 隐藏式
+### 2. 隐藏式（implicit）
 
-### 3. 密码式
+即**隐藏授权码步骤，直接向前端发放令牌**，也称授权码隐藏式。
 
-### 4. 客户端凭证
+#### 整体流程
 
+![20191028-OAuth2-05.png](http://images.pingan8787.com/blog/20191028-OAuth2-05.png)
 
+（配图来自**阮一峰大佬**）
+
+#### 步骤分析
+
+1. 用户从 A 网站跳转到 B 网站，要求授权用户数据给 A 网站使用。
+
+```sh
+https://b.com/oauth/authorize?
+  response_type=token&
+  client_id=CLIENT_ID&
+  redirect_uri=CALLBACK_URL&
+  scope=read
+```
+`response_type` 参数为 `token`，表示**要求直接返回令牌**。
+
+2. 用户在 B 网站同意授权给 A 网站。
+
+当用户同意授权后，会跳转到 `redirect_uri` 参数指定的重定向地址，并将令牌作为 `URL` 参数传递给 A 网站。
+
+```sh
+https://a.com/callback#token=ACCESS_TOKEN
+```
+
+`token` 参数就是令牌，A 网站因此直接在前端拿到令牌。
+
+**注意：**
+
+这里的令牌位置是 `URL` 锚点（即 `#` 号），而不是查询字符串，这是因为锚点不会发到服务器，避免泄露令牌的风险。
+
+**适用场景：**
+
+由于直接传递令牌不安全，因此常常适用在对安全要求不高的场景，并且令牌有效期非常短，例如会话期间（session）有效，关闭浏览器便失效。
+
+### 3. 密码式（password）
+
+即：**对于信任的应用，可以携带约定的用户名和密码进行令牌申请**。
+
+#### 流程分析
+
+![20191028-OAuth2-07.png](http://images.pingan8787.com/blog/20191028-OAuth2-07.png)
+
+1. A 网站使用 B 网站提供的用户名和密码，向 B 网站发起令牌请求。
+
+```sh
+https://oauth.b.com/token?
+  grant_type=password&
+  username=USERNAME&
+  password=PASSWORD&
+  client_id=CLIENT_ID
+```
+
+`grant_type` 参数是授权方式，这里的 `password` 表示"密码式"；
+`username` 和 `password` 是 B 的用户名和密码。
+
+2. B 网站验证身份后直接将令牌存在 JSON 数据中，作为 HTTP 相应返回令牌给 A 网站。
+
+**适用场景：**
+
+风险较大，一般适用在对应用高度信任的情况。
+
+### 4. 客户端凭证（client credentials）
+
+#### 流程分析
+
+![20191028-OAuth2-06.png](http://images.pingan8787.com/blog/20191028-OAuth2-06.png)
 
 ## 参考文章
 
-1. 部门大佬的资料
+1. 部门内部培训资料
 2. [《OAuth 2 深入介绍》](https://www.cnblogs.com/Wddpct/p/8976480.html)
-3. [《理解OAuth 2.0》](www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
+3. [《阮一峰 理解OAuth 2.0》](www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
+4. [《阮一峰 OAuth 2.0 的四种方式》](www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html)

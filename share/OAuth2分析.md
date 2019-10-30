@@ -1,3 +1,5 @@
+![cover](http://images.pingan8787.com/blog/Cover-OAuth2.png)
+
 
 ## 一、OAuth 概念
 

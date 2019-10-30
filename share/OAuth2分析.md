@@ -309,3 +309,19 @@ B 网站验证通过以后，就会颁发新的令牌。
 2. [《OAuth 2 深入介绍》](https://www.cnblogs.com/Wddpct/p/8976480.html)
 3. [《阮一峰 理解OAuth 2.0》](www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 4. [《阮一峰 OAuth 2.0 的四种方式》](www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html)
+
+
+### 关于我
+
+> 本文首发在 [pingan8787个人博客](http://www.pingan8787.com)，如需转载请联系本人。
+
+|Author|王平安|
+|---|---|
+|E-mail|pingan8787@qq.com|
+|博  客|www.pingan8787.com|
+|微  信|pingan8787|
+|每日文章推荐|https://github.com/pingan8787/Leo_Reading/issues|
+|ES小册|js.pingan8787.com|
+
+###  微信公众号
+![bg](http://images.pingan8787.com/blog/2019_10_24guild_page.png)  

@@ -139,6 +139,6 @@ let x: [string, number] = ['hello', 10];
 4. 声明枚举
 
 ```js
-enum Color {Red, Green, Blue}
-let c: Color = Color.Green;
+enum Color {RED, GREEN, BLUE}
+let c: Color = Color.GREEN;
 ```

@@ -202,7 +202,7 @@ MyObject.prototype.myFunction(value)
 
 ## 1. 函数重载
 
-函数重载或方法重载是使用相同名称和不同参数数量或类型创建多个方法的一种能力。调用时根据实参的形式，选择与它匹配的方法执行操作。
+函数重载或方法重载是**使用相同名称和不同参数数量或类型创建多个方法的一种能力**。调用时根据实参的形式，选择与它匹配的方法执行操作。
 为同一个函数提供多个函数类型定义来进行函数重载，编译器会根据这个列表去处理函数的调用。
 
 具体如下：
@@ -212,7 +212,73 @@ MyObject.prototype.myFunction(value)
 * 函数的修饰符可以不相同
 * 构造函数也可以被重载
 
-## 2. 
+## 2. JavaScript 实现函数重载
+
+JavaScript函数可以随意传递任意数量、任意类型的参数，我们通过 2 种常用方法来实现 JavaScript 的函数重载。
+
+参考文章[《JavaScript实现函数重载》](https://segmentfault.com/a/1190000016193719)。
+
+首先提出需求：
+```js
+// 已知 leo 对象
+let people = {
+    values: ['Dean Edwards', 'Sam Stephenson', 'Alex Russell', 'Dean Tom']
+};
+
+// 定义 find 方法
+// 0个入参，返回所有名字
+// 1个入参，返回包含参数的所有名字
+// 2个入参，返回包含所有参数的相同名字
+people.find();                  // ["Dean Edwards", "Sam Stephenson", "Alex Russell", "Dean Tom"]
+people.find('Dean');            // ["Dean Edwards", "Dean Tom"]
+people.find('Dean', 'Edwards'); // ["Dean Edwards"]
+```
+
+### 2.1 arguments + switch 实现函数重载
+
+该方法比较常用，且易于理解：
+
+```js
+people.find = function(){
+    switch(arguments.length) {
+        case 0:
+            return this.values;
+        case 1:
+            return this.values.filter(val => !!~val.indexOf(arguments[0]));
+        case 2:
+            return this.values.filter(val => !!~val.indexOf(`${arguments[0]} ${arguments[1]}`));
+    }
+}
+```
+
+### 2.2 arguments + 闭包实现函数重载
+
+通过核心方法 `addMethod`，保存注册函数：
+
+```js
+function addMethod(object, name, fn) {
+    let old = object[name];
+    object[name] = function () {
+        if (fn.length === arguments.length) {
+            return fn.apply(this, arguments);
+        } else if (typeof old === 'function') {
+            return old.apply(this, arguments);
+        }
+    }
+}
+
+addMethod(people, 'find', function () {
+    return this.values;
+});
+addMethod(people, 'find', function (firstName) {
+    return this.values.filter(val => !!~val.indexOf(firstName));
+});
+addMethod(people, 'find', function (firstName, lastName) {
+    return this.values.filter(val => !!~val.indexOf(`${firstName} ${lastName}`));
+});
+```
+次调用addMethod，都会有一个执行环境保存着当时的 `old` 和 `fn`，所以在调用 `people.find()` 的时候可以找到当时注入的 `fn`，实现函数重载。
+
 
 ## 3. TypeScript 实现函数重载
 在定义重载的时候，一定要把最精确的定义放在最前面，因为 TypeScript编译器处理函数重载时，会查找重载列表，尝试使用第一个重载定义。
